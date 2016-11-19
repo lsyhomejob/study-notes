@@ -25,7 +25,8 @@ git log --pretty=oneline
 ##命令历史
 git reflog
 
-##文件修改添加到暂存区git add
+##文件修改添加到暂存区
+git add
 
 ##把暂存区的所有内容提交到当前分支
 git commit
@@ -59,7 +60,7 @@ ssh-add id_rsa
 ssh-add -l 
 
 ##添加远程仓库（在本地的仓库运行）
-git remote add origin git@github.com:lsyhomejob/gitStudy.git
+git remote add origin git@github.com:lsyhomejob/study-notes.git
 
 ##合并
 git pull --rebase origin master
@@ -104,3 +105,19 @@ git stash
 
 ##恢复工作现场“储藏”
 git stash pop
+
+##强行删除没有被合并过的分支
+git branch -D <name>
+
+##查看远程库信息
+git remote -v
+
+##本地推送分支
+git pull
+git push origin branch-name
+
+##在本地创建和远程分支对应的分支
+git checkout -b branch-name origin/branch-name
+
+##建立本地分支和远程分支的关联
+git branch --set-upstream branch-name origin/branch-name
