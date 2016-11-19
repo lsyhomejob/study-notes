@@ -1,0 +1,93 @@
+学习题目：L008linux系统目录结构知识讲解
+刘思远-20161113
+
+##内核及进程信息
+/proc 目录
+**查看内存信息
+cat /proc/meminfo
+**查看CPU信息
+cat /proc/cpuinfo
+**查看负载信息
+cat /proc/loadavg
+
+##系统管理命令的存放，超级权限用户ROOT的可执行命令存放地
+/sbin 目录 
+
+##临时目录
+/tmp
+
+##系统存放程序目录
+/usr
+
+##经常变动的目录，常放log,数据库
+/var
+**系统日志
+cat /var/log/messages
+
+##系统安全信息日志
+cat /var/log/secure
+
+##关机
+halt 
+init 0
+shutdown -h now
+
+##重启
+reboot 
+init 6
+shutdown -r now
+
+小结：
+/dev/ 设备目录
+/etc/ 配置文件以及服务启动的目录
+/proc 显示内核及进程信息虚拟文件系统
+/tmp 临时文件目录
+/home 普通用户家目录
+/var 变化目录，一般是日志文件目录
+/usr 用户程序，及数据，帮助文件等目录
+/bin 和 /sbin 和 /usr/sbin/ 用户命令目录
+
+重要子目录:
+##网卡的配置文件
+/etc/sysconfig/network-scripts/ifcfg-eth0 或 setup 配置
+ifdown eth0 关闭网卡
+ifup eth0 开启网卡
+
+##重启网卡
+1）/etc/init.d/network restart(所有网卡)
+2）ifdown eth0&&ifup eth0（只针对eth0）
+
+##DNS 域名解析
+/etc/resolv.conf (和ifcfg-eth0下配置冲突)
+
+##hostname修改
+vi /etc/sysconfig/network
+hostname lsy
+
+##设定用户IP与名字（或域名）的对应解析表，相当于本的LAN内DNS
+/etc/hosts
+
+##开机挂载
+/etc/fstab
+
+##开机自启动程序命令文件
+/etc/rc.local
+chkconfig (只能管理 yum/rpm安装的程序的启动服务)
+
+##设定系统启动时 init 进程将把系统设置成什么样的runlevel及加载相关的启动文件设置。
+/etc/inittab
+
+##存放系统或服务器以System V 模式启动的脚本
+/etc/init.d
+
+##系统全局环境变量配置路径
+/etc/profile
+alias rm= (别名)
+PATH 变量
+
+##加载系统登录程序一个目录，命令或文件独立存在！
+/etc/profile.d
+
+
+
+
