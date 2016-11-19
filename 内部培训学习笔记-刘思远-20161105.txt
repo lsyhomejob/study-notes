@@ -1,0 +1,170 @@
+学习题目：L005运维第一关基础命令考试手把手精讲
+刘思远-20161105
+
+##创建目录 make directorys
+mkdir
+-p 循环创建
+
+##查看文件和目录 list
+ls -l
+##查看文件目录 
+ls -ld
+
+##创建文件
+@方法1
+touch test.txt
+@方法2
+vi test.txt
+:wq
+
+ ##编缉器
+ vi 
+ 如果文件不存在，则创建
+ 命令模式，按I，进入编缉模式。
+ 编缉完成后，按ESC键，返回命令模式
+ 输入:wq，保存并退出
+ :w 保存
+ :q 退出
+ :q!强制退出
+ 
+ ##打印
+ echo 'The test case'
+ 
+ ##单行文本覆盖，删除原有数据
+ echo 'The test case' > /test/test.txt
+ 
+ ##单行文本追加，结尾添加
+ echo 'The test case' >> /test/test.txt
+ 
+ ##查看文件内容
+ cat /test/test.txt
+ 
+ ##符号命令
+ ;命令分隔符
+ /根路径或路径分隔符
+ >重定向 
+ >>追加重定向
+ 
+ ##复制文件 copy == cp
+ cp test.txt /home/
+ 
+ ##复制目录 -apr
+ cp -a /etc/ /tmp/
+ -a：此参数的效果和同时指定"-dpR"参数相同； 
+ -d：当复制符号连接时，把目标文件或目录也建立为符号连接，并指向与源文件或目录连接的原始文件或目录； 
+ -f：强行复制文件或目录，不论目标文件或目录是否已存在； 
+ -i：覆盖既有文件之前先询问用户； 
+ -l：对源文件建立硬连接，而非复制文件； 
+ -p：保留源文件或目录的属性； 
+ -R/r：递归处理，将指定目录下的所有文件与子目录一并处理； 
+ -s：对源文件建立符号连接，而非复制文件； 
+ -u：使用这项参数后只会在源文件的更改时间较目标文件更新时或是名称相互对应的目标文件并不存在时，才复制文件； 
+ -S：在备份文件时，用指定的后缀“SUFFIX”代替文件的默认后缀； 
+ -b：覆盖已存在的文件目标前将目标文件备份； 
+ -v：详细显示命令执行的操作。
+ 
+ ##移动文件或目录 move == mv
+ mv test.txt /tmp/
+ 
+ ##删除文件或目录 remove==rm
+ -r递归
+ -f强制
+ rm -f test.txt
+ 
+ ##删除空目录
+ rmdir test
+ 
+ ##Linux的man手册
+ man rm
+ 
+ ##筛选
+ grep -v [字符串] [文件]
+ -v排除
+ 
+ head 头部 -行数 
+ 
+ tail 尾部 -行数
+
+ sed -n /^过滤字符串/p 文件名
+ -n 只显示过滤
+ p 打印
+ d 删除
+ ^ 开头
+ awk /过滤字符串/ 文件名
+ 
+ ##安装命令
+ yum install tree -y
+ 
+ ##快捷键
+ Tab键 命令或路径补全
+ 
+ ##取消覆盖提醒
+ \命令 如：
+ \cp test.txt /home/
+ 命令路径  如：
+ /bin/cp test.txt /home/
+ 
+ ##命令位置
+ which mkdir
+ 
+ ##命令别名
+ alias
+ 
+ ##取消别名
+ unalias
+ 
+ ##系统别名位置
+ cat ~/.bashrc
+ /etc/profile
+ 
+ ##用户家目录
+ ~
+ 
+ ##搜索文件
+ find / -type f cat -name "cat"
+ 
+ ##搜索后删除
+ find / -type f cat -name "cat" -exec rm -f {} \;
+ find / -type f cat -name "cat"|xargs rm -f
+ 
+ ##管道
+ | 通过管道把前一个命令的输出交给后一个命令继续处理
+ 
+ ##查找修改时间
+ find / -type f -mtime +5 ##五天前修改过的文件
+ +5 五天前
+ -5 最近五天
+ 5  
+ 
+ ##序号
+ seq -s " " 5 横打印 1至5 ，以空格分隔
+ seq 2 5 打印2-5
+ seq 1 2 9 打印1至9 ，每隔2个打印
+ seq 1 5 | tac 倒打印
+ 
+ ##根据行数显示
+ sed -n 20,30p ett.txt
+ awk '{if(NR>19 && NR < 31) print $0}' ett.txt
+ 
+ ##修改文件内容
+ sed -i s#liusiyuan#lsy#g test.txt
+ find / -type f -name "text.txt" |xargs sed -i s#liusiyuan#lsy#g
+ 
+ ##查看目录结构
+ tree
+ 
+ ##显示当前路径
+ pwd
+ 
+ ##终止命令行运行
+ Ctrl+c
+ 
+ ##退出前当用户
+ Ctrl+d
+ 
+ ##查看历史记录
+ history
+ 
+ 
+ 
+ 

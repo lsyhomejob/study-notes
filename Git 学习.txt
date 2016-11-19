@@ -1,0 +1,106 @@
+Git 学习笔记
+##自报家门
+**注意git config命令的--global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和Email地址。
+$ git config --global user.name "Your Name"
+$ git config --global user.email "email@example.com"
+
+##初始化一个Git仓库
+git init
+
+##查看修改内容
+git diff
+
+##工作区的状态
+git status
+
+##回退版本
+**在Git中，用HEAD表示当前版本，也就是最新的提交3628164...882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。
+git reset --hard HEAD^
+git reset --hard 3628164
+
+##提交历史记录
+git log
+git log --pretty=oneline
+
+##命令历史
+git reflog
+
+##文件修改添加到暂存区git add
+
+##把暂存区的所有内容提交到当前分支
+git commit
+
+##工作区和版本库里面最新版本的区别
+git diff HEAD -- readme.txt
+
+##暂存区的修改撤销掉
+git reset HEAD readme.txt
+
+##工作区的修改全部撤销
+git checkout -- readme.txt
+
+##版本库中删除该文件
+git rm test.txt
+
+##误删恢复
+git checkout -- test.txt
+
+##创建SSH Key
+cd ~/.ssh
+ssh-keygen -t rsa -C "277511574@qq.com"
+
+##添加密钥到ssh
+ssh-add id_rsa
+**如果失败
+eval `ssh-agent`
+ssh-add id_rsa
+
+##查看SSH
+ssh-add -l 
+
+##添加远程仓库（在本地的仓库运行）
+git remote add origin git@github.com:lsyhomejob/gitStudy.git
+
+##合并
+git pull --rebase origin master
+1、把本地 repo. 从上次 pull 之后的变更暂存起來
+2、恢复到上次 pull 时的状态
+3、合并远端的变更到本地
+4、最后再合并刚刚暂存下來的本地变更
+
+##把本地库的所有内容推送到远程库上
+git push -u origin master
+
+##远程库克隆
+git clone git@github.com:lsyhomejob/gitStudy.git
+
+##创建分支
+git checkout -b dev
+**-b参数表示创建并切换，相当于以下两条命令
+git branch dev
+git checkout dev
+
+##查看当前分支
+git branch
+
+##切换分支
+git checkout dev
+
+##合并分支
+git merge dev
+
+##删除分支
+git branch -d dev
+
+##查看分支的合并情况
+git log --graph
+git log --graph --pretty=oneline --abbrev-commit
+
+##合并分支，禁用快进模式
+git merge --no-ff -m "merge with no-ff" dev
+
+##工作现场“储藏”
+git stash
+
+##恢复工作现场“储藏”
+git stash pop
